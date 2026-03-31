@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartAqua</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+</head>
+
+<body>
+
+<header>
+  <h1>💧 SMARTAQUA</h1>
+  <p>Water Health Monitor</p>
+</header>
+
+<div class="dashboard">
+
+  <!-- ===================== -->
+  <!-- SENSOR CARDS -->
+  <!-- ===================== -->
+  <div class="cards">
+
+    <div class="card" id="tdsCard">
+      <h3>TDS</h3>
+      <p id="tds">--</p>
+      <p class="sensor-alert" id="tdsAlert"></p>
+    </div>
+
+    <div class="card" id="turbidityCard">
+      <h3>Turbidity</h3>
+      <p id="turbidity">--</p>
+      <p class="sensor-alert" id="turbidityAlert"></p>
+    </div>
+
+    <div class="card" id="flowCard">
+      <h3>Flow Rate</h3>
+      <p id="flow">--</p>
+      <p class="sensor-alert" id="flowAlert"></p>
+    </div>
+
+    <div class="card" id="pressureCard">
+      <h3>Pressure</h3>
+      <p id="pressure">--</p>
+      <p class="sensor-alert" id="pressureAlert"></p>
+    </div>
+
+  </div>
+
+  <!-- ===================== -->
+  <!-- LIVE GRAPHS -->
+  <!-- ===================== -->
+  <div class="charts">
+    <h2>📊 Live Sensor Graphs</h2>
+
+    <div class="chart-grid">
+
+      <div class="chart-box">
+        <canvas id="tdsChart"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <canvas id="turbidityChart"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <canvas id="flowChart"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <canvas id="pressureChart"></canvas>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================== -->
+  <!-- WATER LEVEL -->
+  <!-- ===================== -->
+  <div class="water-level-section">
+  <h2>Water Level</h2>
+
+  <div class="water-container">
+    
+    <!-- Tank -->
+    <div class="progress-container">
+        <div class="progress-bar" id="waterLevelBar"></div>
+        <div class="progress-text" id="waterLevelInside">0%</div>
+    </div>
+
+    <!-- Graph -->
+    <div class="water-chart-box">
+      <canvas id="waterLevelChart"></canvas>
+    </div>
+
+  </div>
+  <p id="waterLevelAlert" class="sensor-alert"></p>
+
+</div>
+
+  
+
+</div>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
