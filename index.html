@@ -24,84 +24,55 @@
 
 <div class="dashboard">
 
-  <!-- ===================== -->
   <!-- SENSOR CARDS -->
-  <!-- ===================== -->
   <div class="cards">
-
     <div class="card" id="tdsCard">
       <h3>TDS</h3>
       <p id="tds">--</p>
-      <p class="sensor-alert" id="tdsAlert"></p>
     </div>
 
     <div class="card" id="turbidityCard">
       <h3>Turbidity</h3>
       <p id="turbidity">--</p>
-      <p class="sensor-alert" id="turbidityAlert"></p>
     </div>
 
     <div class="card" id="flowCard">
       <h3>Flow Rate</h3>
       <p id="flow">--</p>
-      <p class="sensor-alert" id="flowAlert"></p>
     </div>
-
   </div>
 
-  <!-- ===================== -->
-  <!-- LIVE GRAPHS -->
-  <!-- ===================== -->
+  <!-- GRAPHS -->
   <div class="charts">
     <h2>📊 Live Sensor Graphs</h2>
 
     <div class="chart-grid">
-
-      <div class="chart-box">
-        <canvas id="tdsChart"></canvas>
-      </div>
-
-      <div class="chart-box">
-        <canvas id="turbidityChart"></canvas>
-      </div>
-
-      <div class="chart-box">
-        <canvas id="flowChart"></canvas>
-      </div>
-
-
+      <div class="chart-box"><canvas id="tdsChart"></canvas></div>
+      <div class="chart-box"><canvas id="turbidityChart"></canvas></div>
+      <div class="chart-box"><canvas id="flowChart"></canvas></div>
     </div>
   </div>
 
-  <!-- ===================== -->
   <!-- WATER LEVEL -->
-  <!-- ===================== -->
   <div class="water-level-section">
-  <h2>Water Level</h2>
+    <h2>Water Level</h2>
 
-  <div class="water-container">
-    
-    <!-- Tank -->
-    <div class="progress-container">
+    <div class="water-container">
+      <div class="progress-container">
         <div class="progress-bar" id="waterLevelBar"></div>
         <div class="progress-text" id="waterLevelInside">0%</div>
+      </div>
+
+      <div class="water-chart-box">
+        <canvas id="waterLevelChart"></canvas>
+      </div>
     </div>
 
-    <!-- Graph -->
-    <div class="water-chart-box">
-      <canvas id="waterLevelChart"></canvas>
-    </div>
-
+    <p id="waterLevelAlert"></p>
   </div>
-  <p id="waterLevelAlert" class="sensor-alert"></p>
 
 </div>
 
-  
-
-</div>
-
-<!-- JS -->
 <script src="script.js"></script>
 
 </body>
