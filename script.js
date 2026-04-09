@@ -23,7 +23,6 @@ let labels = [];
 let tdsData = [];
 let turbidityData = [];
 let flowData = [];
-let pressureData = [];
 
 let waterLabels = [];
 let waterLevelData = [];
@@ -97,22 +96,6 @@ const flowChart = new Chart(document.getElementById("flowChart"), {
   options: commonOptions
 });
 
-const pressureChart = new Chart(document.getElementById("pressureChart"), {
-  type: "line",
-  data: {
-    labels,
-    datasets: [{
-      label: "Pressure (bar)",
-      data: pressureData,
-      borderColor: "#ff4d4d",
-      backgroundColor: "rgba(255,77,77,0.2)",
-      tension: 0.4,
-      fill: true
-    }]
-  },
-  options: commonOptions
-});
-
 
 // =======================
 // 📊 WATER LEVEL BAR CHART
@@ -167,19 +150,16 @@ refData.on("value", (snap) => {
   const tdsStatus = getStatus(d.tds, 300, 600);
   const turbStatus = getStatus(d.turbidity, 5, 10);
   const flowStatus = getFlowStatus(d.flow);
-  const pressureStatus = getPressureStatus(d.pressure);
 
   // Update UI Cards
   updateSensor("tds", d.tds, "ppm", "tdsCard", tdsStatus);
   updateSensor("turbidity", d.turbidity, "NTU", "turbidityCard", turbStatus);
   updateSensor("flow", d.flow, "L/min", "flowCard", flowStatus);
-  updateSensor("pressure", d.pressure, "bar", "pressureCard", pressureStatus);
 
   // Sensor Alerts
   updateSensorAlert("tdsAlert", "tds", tdsStatus);
   updateSensorAlert("turbidityAlert", "turbidity", turbStatus);
   updateSensorAlert("flowAlert", "flow", flowStatus);
-  updateSensorAlert("pressureAlert", "pressure", pressureStatus);
 
   // Water Level
   updateWaterLevel(d.level);
@@ -194,20 +174,17 @@ refData.on("value", (snap) => {
   tdsData.push(d.tds);
   turbidityData.push(d.turbidity);
   flowData.push(d.flow);
-  pressureData.push(d.pressure);
 
   if (labels.length > 10) {
     labels.shift();
     tdsData.shift();
     turbidityData.shift();
     flowData.shift();
-    pressureData.shift();
   }
 
   tdsChart.update();
   turbidityChart.update();
   flowChart.update();
-  pressureChart.update();
 
   // =======================
   // 📊 WATER LEVEL GRAPH (HOURLY)
@@ -242,12 +219,6 @@ function getStatus(val, safe, moderate) {
 function getFlowStatus(flow) {
   if (flow === 0 || flow > 50) return "danger";
   else if (flow > 30) return "moderate";
-  else return "safe";
-}
-
-function getPressureStatus(p) {
-  if (p < 0.5 || p > 6) return "danger";
-  else if (p < 1 || p > 5) return "moderate";
   else return "safe";
 }
 
@@ -292,11 +263,6 @@ function updateSensorAlert(id, type, status) {
       safe: "😇 Normal flow",
       moderate: "😕 High flow",
       danger: "🤧 No flow / Leak"
-    },
-    pressure: {
-      safe: "😇 Normal pressure",
-      moderate: "😕 Slight issue",
-      danger: "🤧 Critical pressure"
     }
   };
 
