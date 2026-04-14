@@ -147,7 +147,7 @@ refData.on("value", (snap) => {
   if (!d) return;
 
   // Status
-  const tdsStatus = getStatus(d.tds, 300, 600);
+  const tdsStatus = getStatus(d.tds, 200, 500);
   const turbStatus = getStatus(d.turbidity, 5, 10);
   const flowStatus = getFlowStatus(d.flow);
 
