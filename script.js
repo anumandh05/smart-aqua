@@ -251,12 +251,12 @@ function updateSensorAlert(id, type, status) {
   const messages = {
     tds: {
       safe: "😇 Good water quality",
-      moderate: "😕 Moderate TDS",
-      danger: "🤧 High TDS"
+      moderate: "😕 Boil before drinking",
+      danger: "🤧 Unsafe"
     },
     turbidity: {
       safe: "😇 Clear water",
-      moderate: "😕 Slightly cloudy",
+      moderate: "😕 Slightly dirty",
       danger: "🤧 Dirty water"
     },
     flow: {
